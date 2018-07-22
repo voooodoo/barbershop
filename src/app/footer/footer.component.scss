@@ -1,0 +1,23 @@
+.footer {
+    padding: 12px;
+    font-size: 12px;
+    background: #262626;
+    color: #fff;
+}
+
+.footer-list {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 8px;
+}
+.footer-social,
+.footer-copyright {
+    flex: 1;
+}
+
+.footer-icon {
+    height: 26px;
+    
+}
+

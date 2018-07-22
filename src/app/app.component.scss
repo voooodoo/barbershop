@@ -1,0 +1,20 @@
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
+    top: 58px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    min-height: calc(100vh - 58px);
+}
+.body-content {
+    display: flex;
+    flex: 1 1 auto;    
+}
+
+app-home {
+    width: 100%;
+}
