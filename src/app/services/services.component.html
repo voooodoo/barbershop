@@ -1,1 +1,11 @@
 <img class="services-main-img" src="./assets/img/services/services.jpg" alt="Barber Shop Services">
+
+<mat-list class="services-list">
+    <mat-list-item 
+    
+    *ngFor="let services of dataServices" 
+    >
+        <span class="services-title">{{services.title}}</span> 
+        <span class="services-price">${{services.price}}</span>
+    </mat-list-item>
+</mat-list>

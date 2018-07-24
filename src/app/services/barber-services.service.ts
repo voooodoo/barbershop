@@ -23,9 +23,19 @@ export class BarberServicesService {
       "price": "50.00",
       "duration": "30 minutes",
       "description": "This is for anyone who wants to keep his beard long but trim it regularly so that it always looks groomed. Trimming with scissors gives a natural, clean and neat result. The service includes pleasant hot towels and the application of perfumed oils to make the beard shiny and soft."
+    }, 
+    {
+      "title": "Luxury Wet Shave",
+      "price": "50.00",
+      "duration": "30 minutes",
+      "description": "Classic shave carried out in the “Gian Antonio Pisterzi style”. It stimulates tired skin, leaving it smooth, moisturized and glowing. It also protects the skin from the weather. Enjoy the application of hot towels and a fast, energizing face wash with a purifying product."
     }
 
   ]
 
   constructor() { }
+
+  getDataServices() {
+    return this.dataServices;
+  }
 }
