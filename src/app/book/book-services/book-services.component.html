@@ -1,0 +1,12 @@
+<div [formGroup]="form">
+<mat-checkbox class="book-servise" 
+        formControlName="{{item.title}}"
+      >
+        <span class="services-title">{{item.title}}</span> 
+        <span *ngIf="item.price!=0; else free" class="services-price">from ${{item.price[0]}}</span>
+          <ng-template #free>
+            <span class="services-price">Free</span>
+          </ng-template>
+        <span  class="services-duration">{{item.duration}} minutes</span>
+      </mat-checkbox>
+    </div>

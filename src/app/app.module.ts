@@ -16,6 +16,7 @@ import { BookComponent } from './book/book.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterComponent } from './footer/footer.component';
 import { BarbersComponent } from './barbers/barbers.component';
+import { BookServicesComponent } from './book/book-services/book-services.component';
 
 const appRoutes: Routes = [
   { path: 'book', component: BookComponent },
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     BookComponent,
     PageNotFoundComponent,
     FooterComponent,
-    BarbersComponent
+    BarbersComponent,
+    BookServicesComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -7,7 +7,7 @@
     >
         <span class="services-title">{{services.title}}</span> 
         
-        <span *ngIf="services.price!=0; else free" class="services-price">${{services.price}}</span>
+        <span *ngIf="services.price!=0; else free" class="services-price">from ${{services.price[0]}}</span>
         <ng-template #free>
             <span class="services-price">Free</span>
         </ng-template>

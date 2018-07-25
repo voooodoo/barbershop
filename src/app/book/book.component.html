@@ -1,27 +1,60 @@
 <div class="book-header">
   <h1 class="book-header-title">Book Online</h1>
 </div>
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="serviceFormGroup">
-    <form [formGroup]="serviceFormGroup">
+<mat-horizontal-stepper [linear]="isLinear">
+    <mat-step [stepControl]="formGroup1">
       <ng-template matStepLabel>Select Service</ng-template>
-        <mat-checkbox class="book-servise"
-          *ngFor="let service of dataServices"
-          formControlName="{{service.title}}"
-        
-        >
-          <span class="services-title">{{service.title}}</span> 
-            <span *ngIf="service.price!=0; else free" class="services-price">${{service.price}}</span>
-              <ng-template #free>
-                <span class="services-price">Free</span>
-            </ng-template>
-          <span  class="services-duration">{{service.duration}} minutes</span>
-      </mat-checkbox>
+      <form [formGroup]="serviceFormGroup">
+        <div *ngFor="let item of dataServices">
+          <app-book-services  [item]="item" [form]="serviceFormGroup" ></app-book-services>
+        </div>
+      </form>
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
-    </form>
+    </mat-step>
+    
+  
+  <mat-step [stepControl]="secondFormGroup">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Fill out your address</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="secondCtrl" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+
+<!--<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="serviceFormGroup"> 
+    <form  [formGroup]="serviceFormGroup">
+      <ng-template matStepLabel>Select Service</ng-template>
+      <div *ngFor="let item of dataServices">
+        <app-book-services  [item]="item" [form]="serviceFormGroup" ></app-book-services>
+      </div>
+      <!--
+      <mat-checkbox *ngFor="let item of dataServices" class="book-servise" 
+        formControlName="{{item.title}}"
+      >
+        <span class="services-title">{{item.title}}</span> 
+        <span *ngIf="item.price!=0; else free" class="services-price">from ${{item.price[0]}}</span>
+          <ng-template #free>
+            <span class="services-price">Free</span>
+          </ng-template>
+        <span  class="services-duration">{{item.duration}} minutes</span>
+      </mat-checkbox>
+    -->
+     <!--  
+        <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>-->
+    <!--</form>
   </mat-step>
+  <app-book-services></app-book-services>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out your address</ng-template>
@@ -43,4 +76,4 @@
       <button mat-button type="submit" (click)="onSubmit()">Next</button>
     </div>
   </mat-step>
-</mat-horizontal-stepper>
+</mat-horizontal-stepper>-->

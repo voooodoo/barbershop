@@ -23,14 +23,12 @@ export class BookComponent implements OnInit {
    ) {}
 
   ngOnInit() {
+    console.log(1)
     this.dataServices = this.dataServ.getDataServices()
-
+    console.log(2)
     let serviceFieldsCtrls = {};
-    
     for (let item of this.dataServices) {
-      serviceFieldsCtrls[item.title] = this._formBuilder.control({ 
-        
-    });
+      serviceFieldsCtrls[item.title] = this._formBuilder.control( 'adc');
       }
       
       this.serviceFormGroup = this._formBuilder.group( serviceFieldsCtrls );
@@ -38,8 +36,6 @@ export class BookComponent implements OnInit {
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-    
-    console.log(this.dataServices)
   }
   
   onSubmit() {
