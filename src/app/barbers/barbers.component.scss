@@ -1,3 +1,10 @@
+.barbers-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .barber-card {
     max-width: 450px;
+    margin: 20px;
 }
