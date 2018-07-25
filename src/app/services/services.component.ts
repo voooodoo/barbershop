@@ -6,7 +6,7 @@ import { Services } from './services.model';
   selector: 'app-services',
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.scss'],
-  providers: [BarberServicesService]
+  //providers: [BarberServicesService]
 })
 export class ServicesComponent implements OnInit {
 

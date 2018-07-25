@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from './material/material.module';
+import { ReactiveFormsModule }  from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -53,8 +55,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     MaterialModule,
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    ReactiveFormsModule
+    ],
   providers: [ ],
   bootstrap: [AppComponent]
 })

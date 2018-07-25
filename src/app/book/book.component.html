@@ -1,8 +1,46 @@
 <div class="book-header">
   <h1 class="book-header-title">Book Online</h1>
 </div>
-<div class="book-list">
-  <div class="book-list-item">
-    <span>Select one or more services</span>
-  </div>
-</div>
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="serviceFormGroup">
+    <form [formGroup]="serviceFormGroup">
+      <ng-template matStepLabel>Select Service</ng-template>
+        <mat-checkbox class="book-servise"
+          *ngFor="let service of dataServices"
+          formControlName="{{service.title}}"
+        
+        >
+          <span class="services-title">{{service.title}}</span> 
+            <span *ngIf="service.price!=0; else free" class="services-price">${{service.price}}</span>
+              <ng-template #free>
+                <span class="services-price">Free</span>
+            </ng-template>
+          <span  class="services-duration">{{service.duration}} minutes</span>
+      </mat-checkbox>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="Address" formControlName="secondCtrl" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button type="submit" (click)="onSubmit()">Next</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
