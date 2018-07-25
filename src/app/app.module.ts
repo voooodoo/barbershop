@@ -13,11 +13,13 @@ import { ContactComponent } from './contact/contact.component';
 import { BookComponent } from './book/book.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FooterComponent } from './footer/footer.component';
+import { BarbersComponent } from './barbers/barbers.component';
 
 const appRoutes: Routes = [
   { path: 'book', component: BookComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'services',    component: ServicesComponent },
+  { path: 'barbers',    component: BarbersComponent },
   { path: 'about',    component: AboutComponent },
   { path: 'home',    component: HomeComponent },
   { path: '',
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     ContactComponent,
     BookComponent,
     PageNotFoundComponent,
-    FooterComponent
+    FooterComponent,
+    BarbersComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BarberServicesService} from './barber-services.service'
+import { Services } from './services.model';
 
 @Component({
   selector: 'app-services',
@@ -9,7 +10,7 @@ import { BarberServicesService} from './barber-services.service'
 })
 export class ServicesComponent implements OnInit {
 
-  dataServices;
+  dataServices:Services[];
 
   constructor(private data: BarberServicesService) { }
 

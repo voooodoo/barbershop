@@ -1,0 +1,9 @@
+<mat-card *ngFor="let barber of barbersData" class="barber-card">
+  <mat-card-header>
+    <mat-card-title class="barber-card-title">{{barber.name}}</mat-card-title>
+  </mat-card-header>
+  <img mat-card-image src={{barber.image}} alt="{{barber.name}}">
+  <mat-card-content>
+    <p>{{barber.bio}}</p>
+  </mat-card-content>
+</mat-card>
