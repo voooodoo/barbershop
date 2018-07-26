@@ -39,18 +39,18 @@ export class BookComponent implements OnInit {
     this.serviceFormGroup = this._formBuilder.group( serviceFieldsCtrls );
   
     this.barbersFormGroup = this._formBuilder.group({
-      barberId: ['', Validators.required]
+      barberId: ['']
     });
+
     this.dateFormGroup = this._formBuilder.group({
-      dateForm: ['', Validators.required]
+      dateForm: [(new Date()).toISOString()]
     });
-
     
-
-    console.log(this.dateFormGroup);
   }
   
-  onSubmit() {
+  orderService() {
     console.log(this.serviceFormGroup);
+    console.log(this.barbersFormGroup);
+    console.log(this.dateFormGroup);
   }
 }
