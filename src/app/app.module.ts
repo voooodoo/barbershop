@@ -18,6 +18,7 @@ import { FooterComponent } from './footer/footer.component';
 import { BarbersComponent } from './barbers/barbers.component';
 import { BookServicesComponent } from './book/book-services/book-services.component';
 import { BookBarbersComponent } from './book/book-barbers/book-barbers.component';
+import { BookDateComponent } from './book/book-date/book-date.component';
 
 const appRoutes: Routes = [
   { path: 'book', component: BookComponent },
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     FooterComponent,
     BarbersComponent,
     BookServicesComponent,
-    BookBarbersComponent
+    BookBarbersComponent,
+    BookDateComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

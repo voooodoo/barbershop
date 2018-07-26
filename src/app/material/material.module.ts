@@ -4,6 +4,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import {
   MatButtonModule,
@@ -11,7 +12,10 @@ import {
   MatToolbarModule,
   MatIconModule,
   MatCardModule,
-  MatListModule
+  MatListModule,
+  MatNativeDateModule, 
+  MatSliderModule, 
+  DateAdapter,
 } from '@angular/material';
 
 
@@ -28,7 +32,11 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
+    
   ],
   exports: [
     MatButtonModule,
@@ -41,7 +49,10 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
   ],
   declarations: []
 })

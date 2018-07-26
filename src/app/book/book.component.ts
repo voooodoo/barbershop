@@ -16,14 +16,16 @@ export class BookComponent implements OnInit {
   isLinear = false;
   serviceFormGroup: FormGroup;
   barbersFormGroup: FormGroup;
+  dateFormGroup:FormGroup;
   
   dataServices:Services[];
   dataBarbers:Barbers[];
 
-  constructor(private _formBuilder: FormBuilder,
+    constructor(private _formBuilder: FormBuilder,
     private dataServ: BarberServicesService,
     private dataBarb: BarbersDataService,
    ) {}
+  
 
   ngOnInit() {
     
@@ -36,15 +38,16 @@ export class BookComponent implements OnInit {
     }
     this.serviceFormGroup = this._formBuilder.group( serviceFieldsCtrls );
   
-    /*let barberFieldsCtrls = {};
-    for (let item of this.dataBarbers) {
-      barberFieldsCtrls[item.name] = this._formBuilder.control('');
-    }
-    this.barbersFormGroup = this._formBuilder.group(barberFieldsCtrls);*/
     this.barbersFormGroup = this._formBuilder.group({
       barberId: ['', Validators.required]
     });
-    console.log(this.barbersFormGroup);
+    this.dateFormGroup = this._formBuilder.group({
+      dateForm: ['', Validators.required]
+    });
+
+    
+
+    console.log(this.dateFormGroup);
   }
   
   onSubmit() {

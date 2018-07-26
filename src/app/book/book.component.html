@@ -30,6 +30,18 @@
       </div>
       </form>
     </mat-step>
+
+  <mat-step [stepControl]="dateFormGroup">
+    <ng-template matStepLabel>Select Date</ng-template>
+    <form [formGroup]="dateFormGroup">
+    <app-book-date [form]="dateFormGroup"></app-book-date>
+    </form>  
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+     
+    </mat-step>
   </mat-horizontal-stepper>
 
 <!--<mat-horizontal-stepper [linear]="isLinear" #stepper>
@@ -39,7 +51,7 @@
       <div *ngFor="let item of dataServices">
         <app-book-services  [item]="item" [form]="serviceFormGroup" ></app-book-services>
       </div>
-      <!--
+      
       <mat-checkbox *ngFor="let item of dataServices" class="book-servise" 
         formControlName="{{item.title}}"
       >
