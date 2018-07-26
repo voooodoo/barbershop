@@ -10,7 +10,7 @@ export class BarbersDataService {
     "id":1,
     "rating": 0,
     "services": [1,4],
-    "name": "ALISSA C.",
+    "name": "ALISSA",
     "image":"./assets/img/barbers/alissa.jpg",
     "bio":" She is a talented barber specializing in cutting, shaves, facials, and neck and shoulder massage. Her smile is infectious and she never meets a stranger. Loves all aspects of barber profession."
   },{

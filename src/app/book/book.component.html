@@ -2,29 +2,32 @@
   <h1 class="book-header-title">Book Online</h1>
 </div>
 <mat-horizontal-stepper [linear]="isLinear">
-    <mat-step [stepControl]="formGroup1">
-      <ng-template matStepLabel>Select Service</ng-template>
-      <form [formGroup]="serviceFormGroup">
-        <div *ngFor="let item of dataServices">
-          <app-book-services  [item]="item" [form]="serviceFormGroup" ></app-book-services>
-        </div>
-      </form>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+  
+  <mat-step [stepControl]="serviceFormGroup">
+    <ng-template matStepLabel>Select Service</ng-template>
+    <form [formGroup]="serviceFormGroup">
+      <div *ngFor="let item of dataServices">
+        <app-book-services  [item]="item" [form]="serviceFormGroup" ></app-book-services>
       </div>
-    </mat-step>
+    </form>
+    <div>
+      <button mat-button matStepperNext>Next</button>
+    </div>
+  </mat-step>
     
   
-  <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Address" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+  <mat-step [stepControl]="barbersFormGroup">
+    <ng-template matStepLabel>Select Barber</ng-template>  
+    <form [formGroup]="barbersFormGroup">
+      <mat-radio-group class="book-servise" formControlName="barberId">
+        <div *ngFor="let item of dataBarbers">  
+          <app-book-barbers [item]="item" [form]="barbersFormGroup"></app-book-barbers>
         </div>
+      </mat-radio-group>   
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
       </form>
     </mat-step>
   </mat-horizontal-stepper>

@@ -9,7 +9,7 @@ import { Services } from '../../services/services.model';
 })
 export class BookServicesComponent implements OnInit {
 
-  @Input() item: any;
+  @Input() item: Services;
   @Input() form: FormGroup;
   constructor() {}
 
