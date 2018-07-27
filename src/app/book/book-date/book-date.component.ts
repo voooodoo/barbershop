@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { getLocaleDayNames } from '@angular/common';
 
 @Component({
   selector: 'app-book-date',
