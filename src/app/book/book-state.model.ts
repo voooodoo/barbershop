@@ -1,11 +1,11 @@
 export class BookState {
-    public currentService: number[];
-    public currentBarber: number;
+    public currentService: Number[];
+    public currentBarber: Number;
     public curentDate: Date;
 
     constructor(
-        currentService: number[],
-        currentBarber: number,
+        currentService: Number[],
+        currentBarber: Number,
         curentDate: Date,
     ) {
         this.currentService = currentService;

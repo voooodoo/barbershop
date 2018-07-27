@@ -4,6 +4,7 @@ import { BarberServicesService} from '../services/barber-services.service'
 import { Services } from '../services/services.model';
 import { BarbersDataService } from '../barbers/barbers-data.service';
 import { Barbers } from '../barbers/barbers.model';
+import { BookState} from './book-state.model';
 
 @Component({
   selector: 'app-book',
@@ -12,15 +13,19 @@ import { Barbers } from '../barbers/barbers.model';
 })
 export class BookComponent implements OnInit {
 
-  checked = false;
-  isLinear = false;
+  
   serviceFormGroup: FormGroup;
   barbersFormGroup: FormGroup;
   dateFormGroup:FormGroup;
   
+  currentOrder:BookState;
+
+  currentService:Number[];
+  currentBarber:Number;
+  currentDate:Date;
+
   dataServices:Services[];
   dataBarbers:Barbers[];
-
     constructor(private _formBuilder: FormBuilder,
     private dataServ: BarberServicesService,
     private dataBarb: BarbersDataService,
@@ -43,14 +48,37 @@ export class BookComponent implements OnInit {
     });
 
     this.dateFormGroup = this._formBuilder.group({
-      dateForm: [(new Date()).toISOString()]
+      dateForm: [(new Date())]
     });
     
+  
+  }
+  selectedServices(serviceValue) {
+    var services = [];
+    for( let item in serviceValue) {
+      if(serviceValue[item]) {
+        for( let elem of this.dataServices) {
+          if(elem.title === item ) {
+            services.push(elem.id);    
+          }
+        }   
+      }
+    }
+    return services;
   }
   
+
   orderService() {
-    console.log(this.serviceFormGroup);
-    console.log(this.barbersFormGroup);
-    console.log(this.dateFormGroup);
+    this.currentService = this.selectedServices(this.serviceFormGroup.value);
+    this.currentBarber = this.barbersFormGroup.value.barberId;
+    this.currentDate = this.dateFormGroup.value.dateForm;
+    
+    this.currentOrder = new BookState(this.currentService, this.currentBarber, this.currentDate)
+    //console.log(this.serviceFormGroup);
+    //console.log(this.barbersFormGroup);
+    //console.log(this.dateFormGroup);
+    //console.log(this.currentService);
+    //console.log(this.currentBarber);
+    console.log(this.currentOrder);
   }
 }
