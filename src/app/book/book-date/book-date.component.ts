@@ -11,10 +11,13 @@ export class BookDateComponent implements OnInit {
    
   @Input() form: FormGroup;
   
+  date = new Date();
+
   myFilter = (d: Date): boolean => {
-    const day = d.getDay();
+    const day = d.getDate();
      //Prevent Saturday and Sunday from being selected.
-    return day !== 0;
+    //return day !== 0;
+    return day > this.date.getDate() - 1
   }
   constructor() { }
 
