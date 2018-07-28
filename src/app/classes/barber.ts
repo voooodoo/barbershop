@@ -1,4 +1,4 @@
-export class Barbers {
+export class Barber {
     public id: number;
     public rating: number;
     public services: number[];

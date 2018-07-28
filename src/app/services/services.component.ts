@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BarberServicesService} from './barber-services.service'
-import { Services } from './services.model';
+import { Service } from '../classes/service';
+import { DataService} from '../data.service';
 
 @Component({
   selector: 'app-services',
@@ -9,13 +9,11 @@ import { Services } from './services.model';
 })
 export class ServicesComponent implements OnInit {
 
-  dataServices:Services[];
+  dataServices:Service[];
 
-  constructor(private data: BarberServicesService) { }
+  constructor(private data: DataService) { }
 
   ngOnInit() {
     this.dataServices = this.data.getDataServices()
   }
-
-
 }

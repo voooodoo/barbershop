@@ -1,5 +1,8 @@
 
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "assets/styles/mixins.scss";
+
+
 
 html {
   box-sizing: border-box;
@@ -66,7 +69,7 @@ app-barbers {
   color: #ff4081;
 }
 .mat-checkbox-layout {
-  width: 100%;
+  width: 80%;
 }
 .mat-checkbox-label {
   width: 100%;

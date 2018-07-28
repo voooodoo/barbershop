@@ -1,4 +1,4 @@
-export class Services {
+export class Service {
     public id: number;
     public title: string;
     public price: number[];

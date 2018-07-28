@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Barbers } from './barbers.model';
-import { BarbersDataService } from './barbers-data.service';
+import { DataService } from '../data.service';
+import { Barber } from '../classes/barber';
 
 @Component({
   selector: 'app-barbers',
   templateUrl: './barbers.component.html',
-  styleUrls: ['./barbers.component.scss'],
-  providers:[BarbersDataService]
+  styleUrls: ['./barbers.component.scss']
 })
 export class BarbersComponent implements OnInit {
 
-  barbersData: Barbers[];
+  dataBarbers: Barber[];
 
-  constructor(private data: BarbersDataService) { }
+  constructor(private data:DataService) { }
 
   ngOnInit() {
-    this.barbersData = this.data.getBarbersData()
+    this.dataBarbers = this.data.getDataBarbers()
   }
 
 }

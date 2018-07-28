@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { BarberServicesService} from '../services/barber-services.service'
-import { Services } from '../services/services.model';
-import { BarbersDataService } from '../barbers/barbers-data.service';
-import { Barbers } from '../barbers/barbers.model';
 import { BookState} from './book-state.model';
+
+import { Service } from '../classes/service';
+import { Barber } from '../classes/barber';
+
+import { DataService } from '../data.service';
+import { OrderService } from '../order.service';
 
 @Component({
   selector: 'app-book',
@@ -13,53 +15,64 @@ import { BookState} from './book-state.model';
 })
 export class BookComponent implements OnInit {
 
-  
+  dataServices:Service[];
+  dataBarbers:Barber[];
+
   serviceFormGroup: FormGroup;
   barbersFormGroup: FormGroup;
   dateFormGroup:FormGroup;
   
-  currentOrder:BookState;
-
   currentService:Number[];
   currentBarber:Number;
   currentDate:Date;
-
-  dataServices:Services[];
-  dataBarbers:Barbers[];
-    constructor(private _formBuilder: FormBuilder,
-    private dataServ: BarberServicesService,
-    private dataBarb: BarbersDataService,
-   ) {}
+    
+  constructor(private _formBuilder: FormBuilder,
+    private data: DataService,
+    private order: OrderService,
+  ) {}
   
-
   ngOnInit() {
     
-    this.dataServices = this.dataServ.getDataServices()
-    this.dataBarbers = this.dataBarb.getBarbersData()
+    this.dataServices = this.data.getDataServices()
+    this.dataBarbers = this.data.getDataBarbers()
     
     let serviceFieldsCtrls = {};
     for (let item of this.dataServices) {
       serviceFieldsCtrls[item.title] = this._formBuilder.control('');
     }
+
     this.serviceFormGroup = this._formBuilder.group( serviceFieldsCtrls );
   
-    this.barbersFormGroup = this._formBuilder.group({
-      barberId: ['']
-    });
+    this.barbersFormGroup = this._formBuilder.group({barberId: ['']});
 
-    this.dateFormGroup = this._formBuilder.group({
-      dateForm: [(new Date())]
-    });
+    this.dateFormGroup = this._formBuilder.group({dateForm: [new Date()]});
+
+    this.currentService = this.selectedServices(this.serviceFormGroup.value);
+    this.currentBarber = this.barbersFormGroup.value;
+    this.currentDate = this.dateFormGroup.value;
+    this.order.createOrder(this.currentService, this.currentBarber, this.currentDate);
     
-  
+    this.serviceFormGroup.valueChanges.subscribe( value =>{
+      this.order.setCurrentService(this.selectedServices(value));
+    } )
+
+    this.barbersFormGroup.valueChanges.subscribe( value =>{
+      this.order.setCurrentBarber(value);
+      console.log(value);
+    } )
+    this.dateFormGroup.valueChanges.subscribe( value =>{
+      this.order.setCurrentDate(value);
+    } )
+    
   }
+
   selectedServices(serviceValue) {
     var services = [];
     for( let item in serviceValue) {
       if(serviceValue[item]) {
         for( let elem of this.dataServices) {
           if(elem.title === item ) {
-            services.push(elem.id);    
+            services.push(elem);    
           }
         }   
       }
@@ -67,18 +80,18 @@ export class BookComponent implements OnInit {
     return services;
   }
   
+  changeOrder() {
+    
+  }
 
   orderService() {
-    this.currentService = this.selectedServices(this.serviceFormGroup.value);
-    this.currentBarber = this.barbersFormGroup.value.barberId;
-    this.currentDate = this.dateFormGroup.value.dateForm;
     
-    this.currentOrder = new BookState(this.currentService, this.currentBarber, this.currentDate)
     //console.log(this.serviceFormGroup);
     //console.log(this.barbersFormGroup);
     //console.log(this.dateFormGroup);
     //console.log(this.currentService);
     //console.log(this.currentBarber);
-    console.log(this.currentOrder);
+    console.log(this.currentService);
+    console.log(this.order.getOrder());
   }
 }

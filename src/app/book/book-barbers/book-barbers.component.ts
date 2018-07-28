@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Barber } from '../../classes/barber';
 
 @Component({
   selector: 'app-book-barbers',
@@ -8,7 +9,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class BookBarbersComponent implements OnInit {
 
-  @Input() item: any;
+  @Input() item: Barber;
   @Input() form: FormGroup;
   constructor() { }
 

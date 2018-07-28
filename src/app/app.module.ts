@@ -5,11 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { ReactiveFormsModule }  from '@angular/forms';
 
-
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { ServicesComponent } from './services/services.component';
 import { ContactComponent } from './contact/contact.component';
 import { BookComponent } from './book/book.component';
@@ -25,7 +23,6 @@ const appRoutes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'services',    component: ServicesComponent },
   { path: 'barbers',    component: BarbersComponent },
-  { path: 'about',    component: AboutComponent },
   { path: 'home',    component: HomeComponent },
   { path: '',
     redirectTo: '/home',
@@ -46,7 +43,6 @@ const appRoutes: Routes = [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    AboutComponent,
     ServicesComponent,
     ContactComponent,
     BookComponent,
